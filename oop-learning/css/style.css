@@ -1,0 +1,29 @@
+body {
+    height: 50000px;
+}
+
+img, 
+#background {
+    position: fixed;
+    left: 0;
+    top: 0;
+}
+
+#bird {
+    width: 300px;
+}
+
+#background { 
+    height: 100%;
+    width: 100%;
+    background: url("../asset/img/img1.png");
+    background-repeat: repeat-x;
+    background-size: auto 100%;
+    background-position: 0 0;
+   
+}
+
+#pipe {
+    top: 504px;
+}
+
