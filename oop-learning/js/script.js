@@ -7,6 +7,49 @@ $(document).ready(function(){
         return Math.floor(Math.random() * (max - min + 1)) + min;
     }
 
+    function makePipe(){
+        return {
+            pipeId: null, // bird_XXXX
+            pipeSize: null, // integer
+            movementRatio: null, // to be divided from scrolling pixels
+            topOffset: null,
+            addPipe: function(){
+                var _newPipe = document.createElement('img');
+                
+                _newPipe.src = 'asset/img/pipe.png';
+                _newPipe.className = 'pipe';
+                _newPipe.id = this.pipeId;
+
+                _newPipe.style.width = this.pipeSize + 'px';
+                _newPipe.style.left = this.pipeSize + 'px';
+                _newPipe.style.top = this.topOffset + '%';
+        
+
+                document.body.appendChild(_newPipe);
+            },
+            flow: function(scrollDistance){
+                document.getElementById(this.pipeId).style.left = this.pipeSize + scrollDistance / this.movementRatio + 'px';
+            },
+            init: function(){
+                this.topOffset = getRandomInt(10, 70);
+                this.movementRatio = getRandomInt(10, 50);
+                this.pipeId = 'pipe_' + getRandomInt(0, 12345);
+                this.pipeSize = getRandomInt(10, 200);
+                this.addPipe();
+            }
+        };
+    }
+
+    var pipe1 = makePipe(),
+        pipe2 = makePipe(),
+        pipe3 = makePipe(),
+        pipe4 = makePipe();
+
+    pipe1.init();
+    pipe2.init();
+    pipe3.init();
+    pipe4.init();
+
     function makeBird(){
         return {
             birdId: null, // bird_XXXX
